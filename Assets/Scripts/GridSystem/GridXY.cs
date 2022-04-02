@@ -16,8 +16,6 @@ public class GridXY : MonoBehaviour, IGrid
     public int Width { get => _width; }
     public int Height { get => _height; }
 
-    public TextMesh[,] GetDebugArray() => _gridDebugArray;
-
     private void Awake()
     {
         GenerateGrid();
@@ -79,6 +77,11 @@ public class GridXY : MonoBehaviour, IGrid
         return gridIndex;
     }
 
+    public Vector3 GetGridObjectCenter(Vector3 cellWorldPosition)
+    {
+        return GetGridObjectCenter(GetGridIndex(cellWorldPosition));
+    }
+
     public Vector3 GetGridObjectCenter(GridIndex gridIndex)
     {
         if (!IsValidCoordinate(gridIndex))
@@ -102,7 +105,7 @@ public class GridXY : MonoBehaviour, IGrid
         _gridArray[gridIndex.X, gridIndex.Y] = gridObject;
     }
 
-    private GridIndex GetGridIndex(Vector3 cellWorldPosition)
+    public GridIndex GetGridIndex(Vector3 cellWorldPosition)
     {
         int x = Mathf.FloorToInt((cellWorldPosition - _origin).x / _cellSize);
         int y = Mathf.FloorToInt((cellWorldPosition - _origin).y / _cellSize);
@@ -136,13 +139,13 @@ public class GridXY : MonoBehaviour, IGrid
         }
     }
 
-    public List<GridObject> GetColumnAt(int colIndex)
+    public List<GridObject> GetRowAt(int rowIndex)
     {
         List<GridObject> column = new List<GridObject>();
 
-        for (int row = 0; row < _gridArray.GetLength(0); row++)
+        for (int col = 0; col < _gridArray.GetLength(0); col++)
         {
-            GridObject gridObject = _gridArray[row, colIndex];
+            GridObject gridObject = _gridArray[col, rowIndex];
             column.Add(gridObject);
         }
 

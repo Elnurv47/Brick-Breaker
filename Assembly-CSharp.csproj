@@ -53,6 +53,7 @@
     <UnityVersion>2020.3.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\BrickGrid.cs" />
     <Compile Include="Assets\Scripts\GridSystem\IGrid.cs" />
     <Compile Include="Assets\Scripts\GridSystem\GridObject.cs" />
     <Compile Include="Assets\Scripts\GridSystem\GridIndex.cs" />
@@ -60,7 +61,6 @@
     <Compile Include="Assets\Scripts\Utility\Utility.cs" />
     <Compile Include="Assets\Scripts\GridSystem\GridXY.cs" />
     <Compile Include="Assets\BrickSpawner.cs" />
-    <Compile Include="Assets\BrickGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

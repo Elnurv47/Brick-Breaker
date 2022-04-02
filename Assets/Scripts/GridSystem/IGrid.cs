@@ -5,11 +5,12 @@ public interface IGrid
 {
     int Width { get; }
     int Height { get; }
-    Vector3 GetGridObjectPosition(GridIndex point);
-    Vector3 GetGridObjectCenter(GridIndex point);
+    Vector3 GetGridObjectPosition(GridIndex gridIndex);
+    Vector3 GetGridObjectCenter(GridIndex gridIndex);
     GridObject GetGridObject(Vector3 cellWorldPosition);
-    List<GridObject> GetColumnAt(int colIndex);
     void SetGridObject(Vector3 cellWorldPosition, GridObject gridObject);
     void UpdateVisual();
-    TextMesh[,] GetDebugArray();
+    List<GridObject> GetRowAt(int colIndex);
+    Vector3 GetGridObjectCenter(Vector3 cellWorldPosition);
+    GridIndex GetGridIndex(Vector3 cellWorldPosition);
 }
